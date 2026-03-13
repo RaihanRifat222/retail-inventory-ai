@@ -1,0 +1,169 @@
+
+<style>
+.day { display:flex; gap:16px; margin-bottom:10px; cursor:pointer; }
+.day:hover .card { background: var(--color-background-tertiary); }
+.num { width:36px; height:36px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:13px; font-weight:500; flex-shrink:0; margin-top:2px; }
+.card { flex:1; background:var(--color-background-secondary); border:0.5px solid var(--color-border-tertiary); border-radius:var(--border-radius-lg); padding:12px 16px; transition:background 0.15s; }
+.card-top { display:flex; align-items:center; justify-content:space-between; margin-bottom:4px; }
+.card-title { font-size:13px; font-weight:500; color:var(--color-text-primary); }
+.card-phase { font-size:10px; padding:2px 7px; border-radius:20px; }
+.card-desc { font-size:12px; color:var(--color-text-secondary); line-height:1.6; margin-bottom:6px; }
+.card-output { font-size:11px; color:var(--color-text-tertiary); }
+.card-output span { color:var(--color-text-success); font-weight:500; }
+.divider { font-size:11px; color:var(--color-text-tertiary); margin:16px 0 10px 52px; letter-spacing:0.05em; text-transform:uppercase; }
+</style>
+<div style="padding:0.5rem 0">
+
+<div class="divider">Week 1 — foundation</div>
+
+<div class="day" onclick="sendPrompt('Walk me through Day 1: set up the project, install dependencies, and load the H&M CSV into PostgreSQL')">
+  <div class="num" style="background:var(--color-background-info);color:var(--color-text-info)">1</div>
+  <div class="card">
+    <div class="card-top">
+      <span class="card-title">Environment + data loaded into Postgres</span>
+      <span class="card-phase" style="background:var(--color-background-info);color:var(--color-text-info)">Setup</span>
+    </div>
+    <div class="card-desc">Install Python deps, spin up PostgreSQL locally, write a single script that reads all 3 H&M CSVs and loads them into your database.</div>
+    <div class="card-output"><span>✓ Done when:</span> you can run a SQL query and see real H&M data come back</div>
+  </div>
+</div>
+
+<div class="day" onclick="sendPrompt('Walk me through Day 2: enrich the H&M dataset with synthetic size, cost price, stock levels, and store data')">
+  <div class="num" style="background:var(--color-background-info);color:var(--color-text-info)">2</div>
+  <div class="card">
+    <div class="card-top">
+      <span class="card-title">Synthetic data layer</span>
+      <span class="card-phase" style="background:var(--color-background-info);color:var(--color-text-info)">Setup</span>
+    </div>
+    <div class="card-desc">Enrich the raw H&M data with the missing columns — sizes, cost prices, stock snapshots, 3 fictional stores. This becomes your demo dataset.</div>
+    <div class="card-output"><span>✓ Done when:</span> every product has a size, a stock level, and belongs to a store</div>
+  </div>
+</div>
+
+<div class="day" onclick="sendPrompt('Walk me through Day 3: build the FastAPI backend with basic product and stock endpoints')">
+  <div class="num" style="background:var(--color-background-info);color:var(--color-text-info)">3</div>
+  <div class="card">
+    <div class="card-top">
+      <span class="card-title">FastAPI backend skeleton</span>
+      <span class="card-phase" style="background:var(--color-background-info);color:var(--color-text-info)">Setup</span>
+    </div>
+    <div class="card-desc">Stand up FastAPI, connect it to Postgres via SQLAlchemy, and build 3–4 basic endpoints: list products, get stock by SKU, get sales by date range.</div>
+    <div class="card-output"><span>✓ Done when:</span> you can hit your API in the browser and get real data back</div>
+  </div>
+</div>
+
+<div class="divider">Week 2 — AI features</div>
+
+<div class="day" onclick="sendPrompt('Walk me through Day 4: build the demand forecasting model using Prophet on the H&M transaction data')">
+  <div class="num" style="background:var(--color-background-success);color:var(--color-text-success)">4</div>
+  <div class="card">
+    <div class="card-top">
+      <span class="card-title">Demand forecasting model</span>
+      <span class="card-phase" style="background:var(--color-background-success);color:var(--color-text-success)">AI</span>
+    </div>
+    <div class="card-desc">Train a Prophet model on the H&M transaction history. Generate 30/60/90-day forecasts per product category. Expose it as a FastAPI endpoint.</div>
+    <div class="card-output"><span>✓ Done when:</span> /forecast?product_id=X returns a predicted demand curve</div>
+  </div>
+</div>
+
+<div class="day" onclick="sendPrompt('Walk me through Day 5: build the loss prevention anomaly detection using scikit-learn Isolation Forest')">
+  <div class="num" style="background:var(--color-background-success);color:var(--color-text-success)">5</div>
+  <div class="card">
+    <div class="card-top">
+      <span class="card-title">Loss prevention — anomaly detection</span>
+      <span class="card-phase" style="background:var(--color-background-success);color:var(--color-text-success)">AI</span>
+    </div>
+    <div class="card-desc">Inject synthetic shrinkage events into your data, then train an Isolation Forest model to detect stock anomalies. Expose flagged anomalies via API.</div>
+    <div class="card-output"><span>✓ Done when:</span> /anomalies returns a ranked list of suspicious stock deltas</div>
+  </div>
+</div>
+
+<div class="day" onclick="sendPrompt('Walk me through Day 6: build the auto-replenishment logic — reorder point calculation and PO draft generation')">
+  <div class="num" style="background:var(--color-background-success);color:var(--color-text-success)">6</div>
+  <div class="card">
+    <div class="card-top">
+      <span class="card-title">Auto-replenishment engine</span>
+      <span class="card-phase" style="background:var(--color-background-success);color:var(--color-text-success)">AI</span>
+    </div>
+    <div class="card-desc">Use the forecast output to compute dynamic reorder points. Auto-generate purchase order drafts when stock falls below threshold.</div>
+    <div class="card-output"><span>✓ Done when:</span> /replenishment returns a list of SKUs that need reordering + suggested quantities</div>
+  </div>
+</div>
+
+<div class="divider">Week 3 — dashboard</div>
+
+<div class="day" onclick="sendPrompt('Walk me through Day 7: scaffold the React frontend with Vite, TailwindCSS, and TanStack Query connected to the FastAPI backend')">
+  <div class="num" style="background:var(--color-background-warning);color:var(--color-text-warning)">7</div>
+  <div class="card">
+    <div class="card-top">
+      <span class="card-title">React app scaffold</span>
+      <span class="card-phase" style="background:var(--color-background-warning);color:var(--color-text-warning)">Frontend</span>
+    </div>
+    <div class="card-desc">Create the Vite + React + Tailwind project, install shadcn/ui and TanStack Query, wire it up to your FastAPI backend, build a basic nav shell.</div>
+    <div class="card-output"><span>✓ Done when:</span> the app loads and a sidebar shows your 3 main sections</div>
+  </div>
+</div>
+
+<div class="day" onclick="sendPrompt('Walk me through Day 8: build the analytics dashboard page with sell-through charts and demand forecast visualisation')">
+  <div class="num" style="background:var(--color-background-warning);color:var(--color-text-warning)">8</div>
+  <div class="card">
+    <div class="card-top">
+      <span class="card-title">Analytics dashboard page</span>
+      <span class="card-phase" style="background:var(--color-background-warning);color:var(--color-text-warning)">Frontend</span>
+    </div>
+    <div class="card-desc">Build the main dashboard: sell-through bar chart, demand forecast line chart, top SKUs table. All pulling live data from your API.</div>
+    <div class="card-output"><span>✓ Done when:</span> the dashboard shows real H&M data in charts</div>
+  </div>
+</div>
+
+<div class="day" onclick="sendPrompt('Walk me through Day 9: build the loss prevention and replenishment pages in the React frontend')">
+  <div class="num" style="background:var(--color-background-warning);color:var(--color-text-warning)">9</div>
+  <div class="card">
+    <div class="card-top">
+      <span class="card-title">Loss prevention + replenishment pages</span>
+      <span class="card-phase" style="background:var(--color-background-warning);color:var(--color-text-warning)">Frontend</span>
+    </div>
+    <div class="card-desc">Build the anomaly alerts table (flagged SKUs with severity scores) and the replenishment queue (SKUs needing reorder + approve/dismiss actions).</div>
+    <div class="card-output"><span>✓ Done when:</span> both pages load with real data and you can interact with them</div>
+  </div>
+</div>
+
+<div class="divider">Week 4 — polish + demo ready</div>
+
+<div class="day" onclick="sendPrompt('Walk me through Day 10: add the natural language query feature using the Claude API')">
+  <div class="num" style="background:var(--color-background-danger);color:var(--color-text-danger)">10</div>
+  <div class="card">
+    <div class="card-top">
+      <span class="card-title">Natural language query (Claude API)</span>
+      <span class="card-phase" style="background:var(--color-background-danger);color:var(--color-text-danger)">Polish</span>
+    </div>
+    <div class="card-desc">Add the "ask your inventory" feature — a text input that sends questions to Claude, which translates them into SQL queries and returns results as charts.</div>
+    <div class="card-output"><span>✓ Done when:</span> you can type "which items underperformed last month?" and get a chart back</div>
+  </div>
+</div>
+
+<div class="day" onclick="sendPrompt('Walk me through Day 11: deploy the full stack to Railway and make it publicly accessible')">
+  <div class="num" style="background:var(--color-background-danger);color:var(--color-text-danger)">11</div>
+  <div class="card">
+    <div class="card-top">
+      <span class="card-title">Deploy to Railway</span>
+      <span class="card-phase" style="background:var(--color-background-danger);color:var(--color-text-danger)">Polish</span>
+    </div>
+    <div class="card-desc">Deploy FastAPI backend + PostgreSQL + React frontend to Railway. Get a live URL you can share with anyone — this is your portfolio link.</div>
+    <div class="card-output"><span>✓ Done when:</span> the app is live at a public URL</div>
+  </div>
+</div>
+
+<div class="day" onclick="sendPrompt('Walk me through Day 12: final demo polish — seed realistic data, add a demo mode, and write the README')">
+  <div class="num" style="background:var(--color-background-danger);color:var(--color-text-danger)">12</div>
+  <div class="card">
+    <div class="card-top">
+      <span class="card-title">Demo polish + README</span>
+      <span class="card-phase" style="background:var(--color-background-danger);color:var(--color-text-danger)">Polish</span>
+    </div>
+    <div class="card-desc">Seed the database with compelling demo scenarios (a stockout, a spike, a flagged theft). Write the README and GitHub description. Done.</div>
+    <div class="card-output"><span>✓ Done when:</span> you'd be happy sending the GitHub link to a hiring manager</div>
+  </div>
+</div>
+
+</div>

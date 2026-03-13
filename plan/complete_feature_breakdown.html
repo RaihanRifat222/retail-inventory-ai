@@ -1,0 +1,156 @@
+
+<style>
+  .fb { padding: 1rem 0; }
+  .module { background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); padding: 1rem 1.25rem; margin-bottom: 10px; }
+  .mod-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+  .mod-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+  .mod-title { font-size: 14px; font-weight: 500; color: var(--color-text-primary); }
+  .feat-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 7px; }
+  .feat { background: var(--color-background-secondary); border-radius: 6px; padding: 7px 10px; cursor: pointer; transition: background 0.15s; }
+  .feat:hover { background: var(--color-background-tertiary); }
+  .feat-name { font-size: 12px; font-weight: 500; color: var(--color-text-primary); }
+  .feat-desc { font-size: 11px; color: var(--color-text-tertiary); margin-top: 2px; }
+</style>
+<div class="fb">
+
+  <div class="module">
+    <div class="mod-header">
+      <div class="mod-dot" style="background:#534AB7"></div>
+      <span class="mod-title">Core AI engine</span>
+    </div>
+    <div class="feat-grid">
+      <div class="feat" onclick="sendPrompt('How does the SKU-level ML forecasting model work?')"><div class="feat-name">SKU-level ML model</div><div class="feat-desc">Per-variant prediction</div></div>
+      <div class="feat" onclick="sendPrompt('How does the data fusion layer combine signals?')"><div class="feat-name">Signal fusion layer</div><div class="feat-desc">Weighted ensemble</div></div>
+      <div class="feat" onclick="sendPrompt('How does the anomaly scoring engine work?')"><div class="feat-name">Anomaly scoring</div><div class="feat-desc">Delta detection engine</div></div>
+      <div class="feat" onclick="sendPrompt('How are AI model outputs explained to non-technical users?')"><div class="feat-name">Explainability layer</div><div class="feat-desc">Human-readable reasons</div></div>
+      <div class="feat" onclick="sendPrompt('How does the model retrain on new sales data?')"><div class="feat-name">Continuous retraining</div><div class="feat-desc">Rolling data window</div></div>
+    </div>
+  </div>
+
+  <div class="module">
+    <div class="mod-header">
+      <div class="mod-dot" style="background:#1D9E75"></div>
+      <span class="mod-title">Demand forecasting</span>
+    </div>
+    <div class="feat-grid">
+      <div class="feat" onclick="sendPrompt('How does 30/60/90 day SKU forecasting work?')"><div class="feat-name">30/60/90-day forecast</div><div class="feat-desc">Per SKU, per location</div></div>
+      <div class="feat" onclick="sendPrompt('How does the system model trend decay for fashion items?')"><div class="feat-name">Trend decay modelling</div><div class="feat-desc">Viral item lifecycle</div></div>
+      <div class="feat" onclick="sendPrompt('How are colour and size split forecasts generated?')"><div class="feat-name">Colour / size split</div><div class="feat-desc">Variant-level breakdown</div></div>
+      <div class="feat" onclick="sendPrompt('How does social media trend data feed into forecasting?')"><div class="feat-name">Social trend ingestion</div><div class="feat-desc">TikTok, search velocity</div></div>
+      <div class="feat" onclick="sendPrompt('How are new product forecasts generated without history?')"><div class="feat-name">New product forecast</div><div class="feat-desc">Cold-start model</div></div>
+      <div class="feat" onclick="sendPrompt('How are forecast confidence intervals shown to users?')"><div class="feat-name">Confidence intervals</div><div class="feat-desc">Uncertainty ranges</div></div>
+    </div>
+  </div>
+
+  <div class="module">
+    <div class="mod-header">
+      <div class="mod-dot" style="background:#1D9E75"></div>
+      <span class="mod-title">Auto-replenishment</span>
+    </div>
+    <div class="feat-grid">
+      <div class="feat" onclick="sendPrompt('How is the dynamic reorder point calculated?')"><div class="feat-name">Dynamic reorder point</div><div class="feat-desc">Demand + lead time</div></div>
+      <div class="feat" onclick="sendPrompt('How are purchase orders auto-drafted?')"><div class="feat-name">PO auto-drafting</div><div class="feat-desc">Quantity optimisation</div></div>
+      <div class="feat" onclick="sendPrompt('How does the approval threshold and human-in-the-loop work?')"><div class="feat-name">Approval threshold</div><div class="feat-desc">Auto vs human review</div></div>
+      <div class="feat" onclick="sendPrompt('How does MOQ and supplier constraint handling work?')"><div class="feat-name">MOQ handling</div><div class="feat-desc">Supplier constraints</div></div>
+      <div class="feat" onclick="sendPrompt('How does the system track PO status after sending?')"><div class="feat-name">PO status tracking</div><div class="feat-desc">Dispatch to delivery</div></div>
+      <div class="feat" onclick="sendPrompt('How are emergency top-up orders triggered?')"><div class="feat-name">Emergency top-up</div><div class="feat-desc">Critical stockout trigger</div></div>
+    </div>
+  </div>
+
+  <div class="module">
+    <div class="mod-header">
+      <div class="mod-dot" style="background:#1D9E75"></div>
+      <span class="mod-title">Loss prevention</span>
+    </div>
+    <div class="feat-grid">
+      <div class="feat" onclick="sendPrompt('How does real-time expected vs actual stock comparison work?')"><div class="feat-name">Expected vs actual</div><div class="feat-desc">Real-time delta tracking</div></div>
+      <div class="feat" onclick="sendPrompt('How does shrinkage classification work — theft vs error?')"><div class="feat-name">Shrinkage classification</div><div class="feat-desc">Theft / error / admin</div></div>
+      <div class="feat" onclick="sendPrompt('How are receiving discrepancies detected at the warehouse?')"><div class="feat-name">Receiving audit</div><div class="feat-desc">Inbound discrepancies</div></div>
+      <div class="feat" onclick="sendPrompt('How does inter-store transfer leakage detection work?')"><div class="feat-name">Transfer leakage</div><div class="feat-desc">Stock-in-transit gaps</div></div>
+      <div class="feat" onclick="sendPrompt('How are loss events logged and escalated?')"><div class="feat-name">Escalation workflow</div><div class="feat-desc">Alert, log, resolve</div></div>
+      <div class="feat" onclick="sendPrompt('How does the loss prevention audit trail work?')"><div class="feat-name">Audit trail</div><div class="feat-desc">Full event history</div></div>
+    </div>
+  </div>
+
+  <div class="module">
+    <div class="mod-header">
+      <div class="mod-dot" style="background:#1D9E75"></div>
+      <span class="mod-title">AI analytics dashboard</span>
+    </div>
+    <div class="feat-grid">
+      <div class="feat" onclick="sendPrompt('How does sell-through rate tracking work per category?')"><div class="feat-name">Sell-through tracking</div><div class="feat-desc">Category and SKU level</div></div>
+      <div class="feat" onclick="sendPrompt('How does size curve health analysis work?')"><div class="feat-name">Size curve analysis</div><div class="feat-desc">Per-size sell-through</div></div>
+      <div class="feat" onclick="sendPrompt('How does the natural language query interface work?')"><div class="feat-name">Natural language query</div><div class="feat-desc">Ask questions, get charts</div></div>
+      <div class="feat" onclick="sendPrompt('How are AI-prioritised alerts ranked and surfaced?')"><div class="feat-name">AI-ranked alerts</div><div class="feat-desc">Impact-weighted signals</div></div>
+      <div class="feat" onclick="sendPrompt('How does collection health scoring work?')"><div class="feat-name">Collection health score</div><div class="feat-desc">Season-wide overview</div></div>
+      <div class="feat" onclick="sendPrompt('How are automated performance reports generated?')"><div class="feat-name">Auto reports</div><div class="feat-desc">Scheduled summaries</div></div>
+    </div>
+  </div>
+
+  <div class="module">
+    <div class="mod-header">
+      <div class="mod-dot" style="background:#D85A30"></div>
+      <span class="mod-title">Seasonal planning</span>
+    </div>
+    <div class="feat-grid">
+      <div class="feat" onclick="sendPrompt('How does the 12-month seasonal demand curve work?')"><div class="feat-name">12-month demand curve</div><div class="feat-desc">Category-level model</div></div>
+      <div class="feat" onclick="sendPrompt('How are buying budgets planned by season?')"><div class="feat-name">Buying budget planner</div><div class="feat-desc">OTB calculation</div></div>
+      <div class="feat" onclick="sendPrompt('How does holiday and event spike modelling work?')"><div class="feat-name">Event spike modelling</div><div class="feat-desc">Holiday, sales windows</div></div>
+      <div class="feat" onclick="sendPrompt('How does last season vs this season comparison work?')"><div class="feat-name">Season comparison</div><div class="feat-desc">YoY variance analysis</div></div>
+    </div>
+  </div>
+
+  <div class="module">
+    <div class="mod-header">
+      <div class="mod-dot" style="background:#D85A30"></div>
+      <span class="mod-title">Profit optimisation</span>
+    </div>
+    <div class="feat-grid">
+      <div class="feat" onclick="sendPrompt('How does AI-driven markdown timing and depth work?')"><div class="feat-name">Markdown engine</div><div class="feat-desc">Timing and depth AI</div></div>
+      <div class="feat" onclick="sendPrompt('How does gross margin tracking work per SKU?')"><div class="feat-name">Margin tracking</div><div class="feat-desc">SKU-level gross margin</div></div>
+      <div class="feat" onclick="sendPrompt('How does the dead stock identification and action system work?')"><div class="feat-name">Dead stock alerts</div><div class="feat-desc">Identify and act fast</div></div>
+      <div class="feat" onclick="sendPrompt('How does overstock redistribution recommendation work?')"><div class="feat-name">Overstock redistribution</div><div class="feat-desc">Move to demand centres</div></div>
+    </div>
+  </div>
+
+  <div class="module">
+    <div class="mod-header">
+      <div class="mod-dot" style="background:#D85A30"></div>
+      <span class="mod-title">Supplier intelligence</span>
+    </div>
+    <div class="feat-grid">
+      <div class="feat" onclick="sendPrompt('How is supplier reliability scored?')"><div class="feat-name">Reliability score</div><div class="feat-desc">On-time, quality, price</div></div>
+      <div class="feat" onclick="sendPrompt('How does lead time variance tracking work?')"><div class="feat-name">Lead time tracking</div><div class="feat-desc">Actual vs promised</div></div>
+      <div class="feat" onclick="sendPrompt('How are at-risk supplier relationships flagged?')"><div class="feat-name">Risk flagging</div><div class="feat-desc">Pre-emptive alerts</div></div>
+      <div class="feat" onclick="sendPrompt('How does price trend monitoring per supplier work?')"><div class="feat-name">Price trend monitor</div><div class="feat-desc">Cost movement alerts</div></div>
+    </div>
+  </div>
+
+  <div class="module">
+    <div class="mod-header">
+      <div class="mod-dot" style="background:#D85A30"></div>
+      <span class="mod-title">Multi-location management</span>
+    </div>
+    <div class="feat-grid">
+      <div class="feat" onclick="sendPrompt('How does real-time cross-location stock sync work?')"><div class="feat-name">Real-time stock sync</div><div class="feat-desc">All stores and warehouse</div></div>
+      <div class="feat" onclick="sendPrompt('How does AI-recommended inter-store stock transfer work?')"><div class="feat-name">Inter-store transfers</div><div class="feat-desc">AI-recommended moves</div></div>
+      <div class="feat" onclick="sendPrompt('How does per-location demand profiling work?')"><div class="feat-name">Location demand profile</div><div class="feat-desc">Store-specific patterns</div></div>
+      <div class="feat" onclick="sendPrompt('How does central vs local buying decision support work?')"><div class="feat-name">Centralised buying</div><div class="feat-desc">HQ vs store autonomy</div></div>
+    </div>
+  </div>
+
+  <div class="module">
+    <div class="mod-header">
+      <div class="mod-dot" style="background:#888780"></div>
+      <span class="mod-title">Integrations and outputs</span>
+    </div>
+    <div class="feat-grid">
+      <div class="feat" onclick="sendPrompt('What POS systems does the platform integrate with?')"><div class="feat-name">POS connectors</div><div class="feat-desc">Shopify, Square, WooCommerce</div></div>
+      <div class="feat" onclick="sendPrompt('How does the ERP and accounting integration work?')"><div class="feat-name">ERP / accounting</div><div class="feat-desc">QuickBooks, Xero, SAP</div></div>
+      <div class="feat" onclick="sendPrompt('How do smart alerts get delivered to users?')"><div class="feat-name">Alert delivery</div><div class="feat-desc">Slack, email, SMS</div></div>
+      <div class="feat" onclick="sendPrompt('How does the supplier EDI and email PO sending work?')"><div class="feat-name">Supplier EDI / email</div><div class="feat-desc">Automated PO sending</div></div>
+      <div class="feat" onclick="sendPrompt('How does the open API for custom integrations work?')"><div class="feat-name">Open API</div><div class="feat-desc">Webhooks, REST</div></div>
+    </div>
+  </div>
+
+</div>

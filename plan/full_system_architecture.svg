@@ -1,0 +1,125 @@
+
+<svg width="100%" viewBox="0 0 680 620">
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+
+<!-- ── Data layer (top) ── -->
+<g class="node c-gray" onclick="sendPrompt('What data sources feed the retail inventory system?')">
+  <rect x="40" y="30" width="130" height="44" rx="8" stroke-width="0.5"/>
+  <text class="th" x="105" y="52" text-anchor="middle" dominant-baseline="central">POS / sales</text>
+</g>
+<g class="node c-gray" onclick="sendPrompt('How does RFID and barcode data flow into the system?')">
+  <rect x="190" y="30" width="130" height="44" rx="8" stroke-width="0.5"/>
+  <text class="th" x="255" y="52" text-anchor="middle" dominant-baseline="central">RFID / barcode</text>
+</g>
+<g class="node c-gray" onclick="sendPrompt('What external signals does the system ingest?')">
+  <rect x="340" y="30" width="130" height="44" rx="8" stroke-width="0.5"/>
+  <text class="th" x="405" y="52" text-anchor="middle" dominant-baseline="central">Trend signals</text>
+</g>
+<g class="node c-gray" onclick="sendPrompt('How does supplier data integrate into the platform?')">
+  <rect x="490" y="30" width="150" height="44" rx="8" stroke-width="0.5"/>
+  <text class="th" x="565" y="52" text-anchor="middle" dominant-baseline="central">Supplier / ERP</text>
+</g>
+
+<!-- ── Core AI engine (center) ── -->
+<g class="node c-purple" onclick="sendPrompt('Tell me about the core AI engine at the heart of the platform')">
+  <rect x="215" y="135" width="250" height="60" rx="12" stroke-width="0.5"/>
+  <text class="th" x="340" y="158" text-anchor="middle" dominant-baseline="central">Core AI engine</text>
+  <text class="ts" x="340" y="178" text-anchor="middle" dominant-baseline="central">ML models · data fusion · inference</text>
+</g>
+
+<!-- arrows from data layer to AI engine -->
+<line x1="105" y1="74" x2="280" y2="133" class="arr" marker-end="url(#arrow)"/>
+<line x1="255" y1="74" x2="310" y2="133" class="arr" marker-end="url(#arrow)"/>
+<line x1="405" y1="74" x2="370" y2="133" class="arr" marker-end="url(#arrow)"/>
+<line x1="565" y1="74" x2="400" y2="133" class="arr" marker-end="url(#arrow)"/>
+
+<!-- ── Feature modules (row 1) ── -->
+<g class="node c-teal" onclick="sendPrompt('Design the demand forecasting module in full detail')">
+  <rect x="30" y="265" width="145" height="56" rx="8" stroke-width="0.5"/>
+  <text class="th" x="102" y="287" text-anchor="middle" dominant-baseline="central">Demand forecast</text>
+  <text class="ts" x="102" y="305" text-anchor="middle" dominant-baseline="central">Predict future demand</text>
+</g>
+<g class="node c-teal" onclick="sendPrompt('Design the auto-replenishment module in full detail')">
+  <rect x="195" y="265" width="145" height="56" rx="8" stroke-width="0.5"/>
+  <text class="th" x="267" y="287" text-anchor="middle" dominant-baseline="central">Auto-replenishment</text>
+  <text class="ts" x="267" y="305" text-anchor="middle" dominant-baseline="central">Smart PO generation</text>
+</g>
+<g class="node c-teal" onclick="sendPrompt('Design the loss prevention module in full detail')">
+  <rect x="360" y="265" width="145" height="56" rx="8" stroke-width="0.5"/>
+  <text class="th" x="432" y="287" text-anchor="middle" dominant-baseline="central">Loss prevention</text>
+  <text class="ts" x="432" y="305" text-anchor="middle" dominant-baseline="central">Shrinkage detection</text>
+</g>
+<g class="node c-teal" onclick="sendPrompt('Design the AI analytics dashboard module in full detail')">
+  <rect x="525" y="265" width="125" height="56" rx="8" stroke-width="0.5"/>
+  <text class="th" x="587" y="287" text-anchor="middle" dominant-baseline="central">AI analytics</text>
+  <text class="ts" x="587" y="305" text-anchor="middle" dominant-baseline="central">Insights dashboard</text>
+</g>
+
+<!-- arrows from AI engine to feature modules -->
+<path d="M280 195 L280 230 L102 230 L102 263" fill="none" class="arr" marker-end="url(#arrow)" stroke="#1D9E75"/>
+<path d="M320 195 L320 230 L267 230 L267 263" fill="none" class="arr" marker-end="url(#arrow)" stroke="#1D9E75"/>
+<path d="M360 195 L360 230 L432 230 L432 263" fill="none" class="arr" marker-end="url(#arrow)" stroke="#1D9E75"/>
+<path d="M400 195 L400 230 L587 230 L587 263" fill="none" class="arr" marker-end="url(#arrow)" stroke="#1D9E75"/>
+
+<!-- ── Feature modules (row 2) ── -->
+<g class="node c-coral" onclick="sendPrompt('Design the seasonal planning module in full detail')">
+  <rect x="30" y="390" width="145" height="56" rx="8" stroke-width="0.5"/>
+  <text class="th" x="102" y="412" text-anchor="middle" dominant-baseline="central">Seasonal planning</text>
+  <text class="ts" x="102" y="430" text-anchor="middle" dominant-baseline="central">12-month demand curves</text>
+</g>
+<g class="node c-coral" onclick="sendPrompt('Design the profit optimisation module in full detail')">
+  <rect x="195" y="390" width="145" height="56" rx="8" stroke-width="0.5"/>
+  <text class="th" x="267" y="412" text-anchor="middle" dominant-baseline="central">Profit optimisation</text>
+  <text class="ts" x="267" y="430" text-anchor="middle" dominant-baseline="central">Margin and markdown</text>
+</g>
+<g class="node c-coral" onclick="sendPrompt('Design the supplier intelligence module in full detail')">
+  <rect x="360" y="390" width="145" height="56" rx="8" stroke-width="0.5"/>
+  <text class="th" x="432" y="412" text-anchor="middle" dominant-baseline="central">Supplier intelligence</text>
+  <text class="ts" x="432" y="430" text-anchor="middle" dominant-baseline="central">Reliability scoring</text>
+</g>
+<g class="node c-coral" onclick="sendPrompt('Design the multi-location sync module in full detail')">
+  <rect x="525" y="390" width="125" height="56" rx="8" stroke-width="0.5"/>
+  <text class="th" x="587" y="412" text-anchor="middle" dominant-baseline="central">Multi-location</text>
+  <text class="ts" x="587" y="430" text-anchor="middle" dominant-baseline="central">Stock redistribution</text>
+</g>
+
+<!-- arrows from AI engine to row 2 modules (routing via shared midline at y=230) -->
+<path d="M280 195 L280 230 L102 230 L102 388" fill="none" class="arr" marker-end="url(#arrow)" stroke="#993C1D" stroke-dasharray="4 3"/>
+<path d="M320 195 L320 230 L267 230 L267 388" fill="none" class="arr" marker-end="url(#arrow)" stroke="#993C1D" stroke-dasharray="4 3"/>
+<path d="M360 195 L360 230 L432 230 L432 388" fill="none" class="arr" marker-end="url(#arrow)" stroke="#993C1D" stroke-dasharray="4 3"/>
+<path d="M400 195 L400 230 L587 230 L587 388" fill="none" class="arr" marker-end="url(#arrow)" stroke="#993C1D" stroke-dasharray="4 3"/>
+
+<!-- ── Output / integrations layer ── -->
+<g class="node c-gray" onclick="sendPrompt('What does the smart alerts and notifications system look like?')">
+  <rect x="30" y="515" width="140" height="44" rx="8" stroke-width="0.5"/>
+  <text class="th" x="100" y="537" text-anchor="middle" dominant-baseline="central">Smart alerts</text>
+</g>
+<g class="node c-gray" onclick="sendPrompt('How does the PO and supplier integration work?')">
+  <rect x="190" y="515" width="140" height="44" rx="8" stroke-width="0.5"/>
+  <text class="th" x="260" y="537" text-anchor="middle" dominant-baseline="central">PO automation</text>
+</g>
+<g class="node c-gray" onclick="sendPrompt('What integrations does the platform support — Shopify, Square, etc?')">
+  <rect x="350" y="515" width="140" height="44" rx="8" stroke-width="0.5"/>
+  <text class="th" x="420" y="537" text-anchor="middle" dominant-baseline="central">POS integrations</text>
+</g>
+<g class="node c-gray" onclick="sendPrompt('How does the natural language reporting interface work?')">
+  <rect x="510" y="515" width="140" height="44" rx="8" stroke-width="0.5"/>
+  <text class="th" x="580" y="537" text-anchor="middle" dominant-baseline="central">NL reporting</text>
+</g>
+
+<!-- connector lines from row 2 down to output layer -->
+<line x1="102" y1="446" x2="100" y2="513" class="arr" marker-end="url(#arrow)"/>
+<line x1="267" y1="446" x2="260" y2="513" class="arr" marker-end="url(#arrow)"/>
+<line x1="432" y1="446" x2="420" y2="513" class="arr" marker-end="url(#arrow)"/>
+<line x1="587" y1="446" x2="580" y2="513" class="arr" marker-end="url(#arrow)"/>
+
+<!-- legend -->
+<g class="c-purple"><rect x="30" y="578" width="12" height="12" rx="2" stroke-width="0.5"/></g>
+<text class="ts" x="48" y="589" dominant-baseline="central">AI core</text>
+<g class="c-teal"><rect x="110" y="578" width="12" height="12" rx="2" stroke-width="0.5"/></g>
+<text class="ts" x="128" y="589" dominant-baseline="central">Primary features</text>
+<g class="c-coral"><rect x="240" y="578" width="12" height="12" rx="2" stroke-width="0.5"/></g>
+<text class="ts" x="258" y="589" dominant-baseline="central">Secondary features</text>
+<g class="c-gray"><rect x="370" y="578" width="12" height="12" rx="2" stroke-width="0.5"/></g>
+<text class="ts" x="388" y="589" dominant-baseline="central">Data sources / outputs</text>
+</svg>

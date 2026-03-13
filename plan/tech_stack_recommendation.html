@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tech Stack — AI Fashion Inventory Platform</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Syne:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0d0d0f;
+    --bg2: #131316;
+    --bg3: #1a1a1e;
+    --border: rgba(255,255,255,0.07);
+    --border-hover: rgba(255,255,255,0.15);
+    --text: #f0ede8;
+    --text-muted: #7a7875;
+    --text-dim: #3d3c3a;
+    --accent: #c8f060;
+    --accent-dim: rgba(200,240,96,0.12);
+    --accent-text: #3a4a0a;
+    --blue: #5b9cf6;
+    --blue-dim: rgba(91,156,246,0.12);
+    --orange: #f5874a;
+    --orange-dim: rgba(245,135,74,0.12);
+    --mono: 'DM Mono', monospace;
+    --sans: 'Syne', sans-serif;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    min-height: 100vh;
+    padding: 48px 32px;
+  }
+
+  header {
+    margin-bottom: 48px;
+  }
+
+  .header-label {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--text-muted);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+
+  h1 {
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1.1;
+    margin-bottom: 8px;
+  }
+
+  h1 span { color: var(--accent); }
+
+  .header-sub {
+    font-size: 14px;
+    color: var(--text-muted);
+    font-weight: 400;
+  }
+
+  .section {
+    margin-bottom: 32px;
+  }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 14px;
+  }
+
+  .section-label {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--text-muted);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .section-line {
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  .grid {
+    display: grid;
+    gap: 8px;
+  }
+
+  .grid-3 { grid-template-columns: repeat(3, 1fr); }
+  .grid-4 { grid-template-columns: repeat(4, 1fr); }
+  .grid-5 { grid-template-columns: repeat(5, 1fr); }
+  .grid-2 { grid-template-columns: repeat(2, 1fr); }
+
+  @media (max-width: 900px) {
+    .grid-4, .grid-5, .grid-3 { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 560px) {
+    .grid-4, .grid-5, .grid-3, .grid-2 { grid-template-columns: 1fr; }
+  }
+
+  .card {
+    background: var(--bg2);
+    border: 0.5px solid var(--border);
+    border-radius: 10px;
+    padding: 14px 16px;
+    transition: border-color 0.2s, background 0.2s;
+    cursor: default;
+  }
+
+  .card:hover {
+    border-color: var(--border-hover);
+    background: var(--bg3);
+  }
+
+  .card-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 8px;
+    margin-bottom: 6px;
+  }
+
+  .card-name {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text);
+    line-height: 1.3;
+  }
+
+  .badge {
+    font-family: var(--mono);
+    font-size: 10px;
+    padding: 2px 7px;
+    border-radius: 20px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .badge-must { background: var(--accent-dim); color: var(--accent); border: 0.5px solid rgba(200,240,96,0.3); }
+  .badge-rec { background: var(--blue-dim); color: var(--blue); border: 0.5px solid rgba(91,156,246,0.25); }
+  .badge-opt { background: rgba(255,255,255,0.04); color: var(--text-muted); border: 0.5px solid var(--border); }
+
+  .card-desc {
+    font-size: 12px;
+    color: var(--text-muted);
+    line-height: 1.55;
+    margin-bottom: 6px;
+  }
+
+  .card-use {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--text-dim);
+  }
+
+  .deploy-card {
+    background: var(--bg2);
+    border: 0.5px solid var(--border);
+    border-radius: 10px;
+    padding: 18px 20px;
+    transition: border-color 0.2s, background 0.2s;
+    cursor: default;
+  }
+
+  .deploy-card:hover {
+    border-color: var(--border-hover);
+    background: var(--bg3);
+  }
+
+  .deploy-card.highlight {
+    border-color: rgba(200,240,96,0.3);
+  }
+
+  .deploy-name {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 6px;
+  }
+
+  .deploy-badge {
+    font-family: var(--mono);
+    font-size: 10px;
+    padding: 2px 8px;
+    border-radius: 20px;
+    background: var(--accent-dim);
+    color: var(--accent);
+    border: 0.5px solid rgba(200,240,96,0.3);
+    display: inline-block;
+    margin-bottom: 10px;
+  }
+
+  .deploy-desc {
+    font-size: 12px;
+    color: var(--text-muted);
+    line-height: 1.6;
+    margin-bottom: 10px;
+  }
+
+  .tag-row { display: flex; flex-wrap: wrap; gap: 5px; }
+  .tag {
+    font-family: var(--mono);
+    font-size: 10px;
+    padding: 2px 7px;
+    border-radius: 4px;
+    background: rgba(255,255,255,0.04);
+    color: var(--text-dim);
+    border: 0.5px solid var(--border);
+  }
+
+  .summary-bar {
+    background: var(--bg2);
+    border: 0.5px solid var(--border);
+    border-radius: 10px;
+    padding: 16px 20px;
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-top: 32px;
+    line-height: 1.8;
+  }
+
+  .summary-bar span { color: var(--accent); }
+  .summary-bar .arrow { color: var(--text-dim); margin: 0 6px; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-label">AI Fashion Inventory Platform</div>
+  <h1>Tech <span>stack</span></h1>
+  <div class="header-sub">Python · React · Mid-market SaaS</div>
+</header>
+
+<div class="section">
+  <div class="section-header">
+    <span class="section-label">Frontend</span>
+    <div class="section-line"></div>
+  </div>
+  <div class="grid grid-3">
+    <div class="card">
+      <div class="card-top"><span class="card-name">React + Vite</span><span class="badge badge-must">Must</span></div>
+      <div class="card-desc">Fast dev server, modern build pipeline. Your UI choice.</div>
+      <div class="card-use">All dashboard UI</div>
+    </div>
+    <div class="card">
+      <div class="card-top"><span class="card-name">TypeScript</span><span class="badge badge-must">Must</span></div>
+      <div class="card-desc">Type safety across a large feature set prevents bugs at scale.</div>
+      <div class="card-use">Entire frontend codebase</div>
+    </div>
+    <div class="card">
+      <div class="card-top"><span class="card-name">TailwindCSS</span><span class="badge badge-must">Must</span></div>
+      <div class="card-desc">Utility-first, fast to build dashboards without custom CSS bloat.</div>
+      <div class="card-use">All component styling</div>
+    </div>
+    <div class="card">
+      <div class="card-top"><span class="card-name">Recharts</span><span class="badge badge-rec">Recommended</span></div>
+      <div class="card-desc">React-native charting library. Sell-through bars, forecast lines, size curve heatmaps.</div>
+      <div class="card-use">Analytics dashboard charts</div>
+    </div>
+    <div class="card">
+      <div class="card-top"><span class="card-name">TanStack Query</span><span class="badge badge-rec">Recommended</span></div>
+      <div class="card-desc">API data fetching, caching, and background refresh cleanly handled.</div>
+      <div class="card-use">All API calls from UI</div>
+    </div>
+    <div class="card">
+      <div class="card-top"><span class="card-name">shadcn/ui</span><span class="badge badge-rec">Recommended</span></div>
+      <div class="card-desc">Copy-paste components on Radix. Tables, modals, dropdowns — production-ready.</div>
+      <div class="card-use">UI component library</div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-header">
+    <span class="section-label">Backend — API layer</span>
+    <div class="section-line"></div>
+  </div>
+  <div class="grid grid-3">
+    <div class="card">
+      <div class="card-top"><span class="card-name">FastAPI</span><span class="badge badge-must">Must</span></div>
+      <div class="card-desc">Async Python, auto-generates OpenAPI docs. Better than Flask for this scale.</div>
+      <div class="card-use">All REST API endpoints</div>
+    </div>
+    <div class="card">
+      <div class="card-top"><span class="card-name">Pydantic v2</span><span class="badge badge-must">Must</span></div>
+      <div class="card-desc">Data validation and serialisation. Ships with FastAPI — define schemas once.</div>
+      <div class="card-use">Request / response schemas</div>
+    </div>
+    <div class="card">
+      <div class="card-top"><span class="card-name">Celery + Redis</span><span class="badge badge-must">Must</span></div>
+      <div class="card-desc">Async task queue for long-running AI jobs without blocking the API.</div>
+      <div class="card-use">Background AI jobs</div>
+    </div>
+    <div class="card">
+      <div class="card-top"><span class="card-name">SQLAlchemy</span><span class="badge badge-rec">Recommended</span></div>
+      <div class="card-desc">Mature async-compatible ORM. Handles complex relational schema for SKUs and POs.</div>
+      <div class="card-use">Database ORM</div>
+    </div>
+    <div class="card">
+      <div class="card-top"><span class="card-name">Alembic</span><span class="badge badge-rec">Recommended</span></div>
+      <div class="card-desc">Migration tool paired with SQLAlchemy. Tracks schema changes as product evolves.</div>
+      <div class="card-use">DB schema migrations</div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-header">
+    <span class="section-label">AI / ML layer</span>
+    <div class="section-line"></div>
+  </div>
+  <div class="grid grid-3">
+    <div class="card">
+      <div class="card-top"><span class="card-name">Prophet</span><span class="badge badge-must">Must</span></div>
+      <div class="card-desc">Meta's time-series library. Handles seasonality, holidays, trend changes — perfect for fashion demand.</div>
+      <div class="card-use">Demand forecasting model</div>
+    </div>
+    <div class="card">
+      <div class="card-top"><span class="card-name">scikit-learn</span><span class="badge badge-must">Must</span></div>
+      <div class="card-desc">Isolation Forest for anomaly detection. Classification for shrinkage event typing.</div>
+      <div class="card-use">Loss prevention models</div>
+    </div>
+    <div class="card">
+      <div class="card-top"><span class="card-name">XGBoost</span><span class="badge badge-rec">Recommended</span></div>
+      <div class="card-desc">Gradient boosting for reorder point prediction, supplier risk scoring, margin optimisation.</div>
+      <div class="card-use">Tabular prediction tasks</div>
+    </div>
+    <div class="card">
+      <div class="card-top"><span class="card-name">Pandas + NumPy</span><span class="badge badge-must">Must</span></div>
+      <div class="card-desc">Core data manipulation. Processing H&M dataset, computing sell-through, building feature tables.</div>
+      <div class="card-use">All data processing</div>
+    </div>
+    <div class="card">
+      <div class="card-top"><span class="card-name">Claude API</span><span class="badge badge-rec">Recommended</span></div>
+      <div class="card-desc">Powers the NL query interface — "which products underperformed?" → SQL → chart.</div>
+      <div class="card-use">NL analytics queries</div>
+    </div>
+    <div class="card">
+      <div class="card-top"><span class="card-name">MLflow</span><span class="badge badge-opt">Optional</span></div>
+      <div class="card-desc">Track model experiments, compare forecast accuracy, version trained models over time.</div>
+      <div class="card-use">Model experiment tracking</div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-header">
+    <span class="section-label">Database</span>
+    <div class="section-line"></div>
+  </div>
+  <div class="grid grid-3">
+    <div class="card">
+      <div class="card-top"><span class="card-name">PostgreSQL</span><span class="badge badge-must">Must</span></div>
+      <div class="card-desc">Primary relational store for products, SKUs, stock levels, POs, locations, customers.</div>
+      <div class="card-use">Main application database</div>
+    </div>
+    <div class="card">
+      <div class="card-top"><span class="card-name">Redis</span><span class="badge badge-must">Must</span></div>
+      <div class="card-desc">Caches hot dashboard queries, Celery task broker, real-time stock pub/sub events.</div>
+      <div class="card-use">Cache + task queue</div>
+    </div>
+    <div class="card">
+      <div class="card-top"><span class="card-name">TimescaleDB</span><span class="badge badge-opt">Optional</span></div>
+      <div class="card-desc">PostgreSQL extension for time-series queries. Useful when stock level history grows large.</div>
+      <div class="card-use">Stock level time series</div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-header">
+    <span class="section-label">Deployment — choose one when ready</span>
+    <div class="section-line"></div>
+  </div>
+  <div class="grid grid-3">
+    <div class="deploy-card">
+      <div class="deploy-name">AWS</div>
+      <div class="deploy-desc">Most mature ecosystem. EC2 or ECS for backend, RDS for Postgres, ElastiCache for Redis, S3 for data files.</div>
+      <div class="tag-row"><span class="tag">ECS / EC2</span><span class="tag">RDS</span><span class="tag">S3</span><span class="tag">Most flexible</span></div>
+    </div>
+    <div class="deploy-card">
+      <div class="deploy-name">GCP</div>
+      <div class="deploy-desc">Strong ML tooling (Vertex AI, BigQuery). Best if AI layer grows beyond scikit-learn into custom model training.</div>
+      <div class="tag-row"><span class="tag">Cloud Run</span><span class="tag">BigQuery</span><span class="tag">Vertex AI</span><span class="tag">ML-friendly</span></div>
+    </div>
+    <div class="deploy-card highlight">
+      <div class="deploy-name">Railway / Render</div>
+      <div class="deploy-badge">Start here</div>
+      <div class="deploy-desc">Easiest to start with. Deploy FastAPI + Postgres + Redis in minutes. Great for development and demos before committing to cloud.</div>
+      <div class="tag-row"><span class="tag">Fastest setup</span><span class="tag">Great for MVP</span><span class="tag">Upgrade later</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="summary-bar">
+  <span>React + Vite</span>
+  <span class="arrow">→</span>
+  <span>FastAPI</span>
+  <span class="arrow">→</span>
+  <span>PostgreSQL / Redis</span>
+  <span class="arrow">→</span>
+  <span>Prophet / scikit-learn / XGBoost / Claude API</span>
+</div>
+
+</body>
+</html>
