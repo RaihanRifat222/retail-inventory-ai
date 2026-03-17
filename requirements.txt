@@ -3,7 +3,9 @@ uvicorn
 sqlalchemy
 psycopg2-binary
 pandas
+numpy
 python-dotenv
+anthropic
 
 prophet
 scikit-learn

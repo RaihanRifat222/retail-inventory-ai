@@ -4,6 +4,7 @@ import {
   TrendingUp,
   ShieldAlert,
   ShoppingCart,
+  MessageSquare,
 } from "lucide-react";
 
 const navItems = [
@@ -11,6 +12,7 @@ const navItems = [
   { to: "/forecast", label: "Demand Forecast", icon: TrendingUp },
   { to: "/loss-prevention", label: "Loss Prevention", icon: ShieldAlert },
   { to: "/replenishment", label: "Replenishment", icon: ShoppingCart },
+  { to: "/ask", label: "Ask a Question", icon: MessageSquare },
 ];
 
 export default function Sidebar() {
