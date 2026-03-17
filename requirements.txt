@@ -4,3 +4,7 @@ sqlalchemy
 psycopg2-binary
 pandas
 python-dotenv
+
+prophet
+scikit-learn
+xgboost
